@@ -1,0 +1,48 @@
+{
+  "engineers": [
+    {
+      "id": "eng-001",
+      "name": "Alex Chen",
+      "slack_user_id": "U0BBG4TGU2V",
+      "email": "alex.chen@company.com",
+      "skills": ["networking", "kubernetes", "sev1", "sev2"],
+      "products": ["Platform A", "Platform B"],
+      "regions": ["AMER", "APAC"],
+      "on_call": true,
+      "max_active_cases": 5
+    },
+    {
+      "id": "eng-002",
+      "name": "Jordan Rivera",
+      "slack_user_id": "U0BBG4TGU2V",
+      "email": "jordan.rivera@company.com",
+      "skills": ["database", "performance", "remote-session", "troubleshooting"],
+      "products": ["Platform A", "Database Suite"],
+      "regions": ["AMER", "EMEA"],
+      "on_call": true,
+      "max_active_cases": 4
+    },
+    {
+      "id": "eng-003",
+      "name": "Sam Patel",
+      "slack_user_id": "U0BBG4TGU2V",
+      "email": "sam.patel@company.com",
+      "skills": ["escalation", "key-customer", "product-expertise", "sev1"],
+      "products": ["Platform B", "Enterprise Suite"],
+      "regions": ["EMEA", "APAC"],
+      "on_call": false,
+      "max_active_cases": 3
+    },
+    {
+      "id": "eng-004",
+      "name": "Taylor Brooks",
+      "slack_user_id": "U0BBG4TGU2V",
+      "email": "taylor.brooks@company.com",
+      "skills": ["remote-session", "troubleshooting", "sev2", "sev3", "service-request"],
+      "products": ["Platform A", "Platform B", "Database Suite"],
+      "regions": ["AMER"],
+      "on_call": true,
+      "max_active_cases": 6
+    }
+  ]
+}

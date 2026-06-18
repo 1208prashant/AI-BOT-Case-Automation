@@ -1,0 +1,28 @@
+{
+  "severity_triggers": ["Sev1", "Sev2", "Sev3"],
+  "request_type_triggers": [
+    "Remote Session",
+    "Troubleshooting Assistance",
+    "Product Expertise",
+    "Customer Escalation",
+    "Key Customer Request",
+    "Service Request"
+  ],
+  "notify_sev3": false,
+  "escalation_keywords": [
+    "escalat",
+    "executive",
+    "urgent",
+    "production down",
+    "outage",
+    "data loss",
+    "security incident"
+  ],
+  "remote_session_keywords": [
+    "remote session",
+    "screen share",
+    "zoom",
+    "teams call",
+    "live assistance"
+  ]
+}
