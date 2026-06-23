@@ -16,7 +16,6 @@ AI-powered Slack bot that monitors support cases (Salesforce or mock data), anal
 - [Step 5 — Configure Engineers](#step-5--configure-engineers)
 - [Step 6 — Run the Bot](#step-6--run-the-bot)
 - [Step 7 — Verify It Works](#step-7--verify-it-works)
-- [Step 8 — Push to GitHub](#step-8--push-to-github)
 - [How It Works](#how-it-works)
 - [Slack Commands](#slack-commands)
 - [Configuration Reference](#configuration-reference)
@@ -59,7 +58,6 @@ Low-priority cases (e.g. billing questions) are automatically skipped.
 |-------------|-------|
 | **Python 3.9+** | Check with `python3 --version` |
 | **Slack workspace** | Free plan works for testing |
-| **Git** | Optional, for GitHub upload |
 | **Salesforce** | **Not required** — mock mode included |
 | **OpenAI API key** | **Not required** — rule-based analysis included |
 
@@ -68,7 +66,7 @@ Low-priority cases (e.g. billing questions) are automatically skipped.
 ## Quick Start Summary
 
 ```bash
-# 1. Clone or extract project
+# 1. Extract or copy the project folder
 cd slackbotagent
 
 # 2. Install
@@ -91,17 +89,9 @@ Within ~15 seconds you should receive an automatic DM — no slash commands need
 
 ## Step 1 — Get the Project
 
-### Option A — Clone from GitHub (after you upload)
+Extract or copy the project folder to your machine, then open a terminal in that directory:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/AI-BOT-Case-Automation.git
-cd AI-BOT-Case-Automation
-```
-
-### Option B — Extract the archive
-
-```bash
-unzip AI-BOT-Case-Automation.zip
 cd slackbotagent
 ```
 
@@ -284,7 +274,7 @@ SALESFORCE_PASSWORD=
 SALESFORCE_SECURITY_TOKEN=
 ```
 
-> **Never commit `.env` to GitHub.** It is already listed in `.gitignore`.
+> **Never share your `.env` file.** It contains secrets and is excluded from version control via `.gitignore`.
 
 ---
 
@@ -389,79 +379,6 @@ python scripts/send_test_notification.py --user-id U07ABC123XY
 | DM shows severity, case details, Acknowledge button | ✓ |
 | `/aibot-status` responds | ✓ |
 | Low-priority cases skipped (no DM) | ✓ |
-
----
-
-## Step 8 — Push to GitHub
-
-### 8.1 Create a new repository on GitHub
-
-1. Go to [https://github.com/new](https://github.com/new)
-2. **Repository name:** `AI-BOT-Case-Automation`
-3. **Description:** `AI-powered Slack bot for automated support case routing and notifications`
-4. Choose **Public** or **Private**
-5. **Do NOT** check "Add a README" (you already have one)
-6. Click **Create repository**
-
-### 8.2 Initialize Git and push (first time)
-
-Run these commands from the project folder:
-
-```bash
-cd ~/slackbotagent
-
-# Initialize git
-git init
-
-# Add all files (.env and .venv are excluded by .gitignore)
-git add .
-
-# First commit
-git commit -m "Initial commit: AI-BOT-Case-Automation Slack bot prototype"
-
-# Rename default branch to main
-git branch -M main
-
-# Add your GitHub repo (replace YOUR_USERNAME)
-git remote add origin https://github.com/YOUR_USERNAME/AI-BOT-Case-Automation.git
-
-# Push
-git push -u origin main
-```
-
-GitHub may prompt you to sign in via browser — use the account you're already logged into.
-
-### 8.3 Push updates later
-
-```bash
-git add .
-git commit -m "Describe your changes"
-git push
-```
-
-### 8.4 Using GitHub CLI (alternative)
-
-If you have `gh` installed:
-
-```bash
-cd ~/slackbotagent
-git init
-git add .
-git commit -m "Initial commit: AI-BOT-Case-Automation Slack bot prototype"
-gh repo create AI-BOT-Case-Automation --public --source=. --push
-```
-
-### 8.5 What gets uploaded (and what doesn't)
-
-| Uploaded to GitHub | Excluded (in .gitignore) |
-|------------------|--------------------------|
-| Source code (`src/`, `main.py`) | `.env` (secrets) |
-| `config/engineers.json` | `.venv/` |
-| `.env.example` | `__pycache__/` |
-| `README.md` | `*.log` |
-| `requirements.txt` | |
-
-> Review `config/engineers.json` before pushing if it contains real email addresses or Slack IDs you want to keep private.
 
 ---
 
