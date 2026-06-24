@@ -2,7 +2,7 @@
   "engineers": [
     {
       "id": "eng-001",
-      "name": "Alex Chen",
+      "name": "Prashant Agrawal",
       "slack_user_id": "U0BBG4TGU2V",
       "email": "alex.chen@company.com",
       "skills": ["networking", "kubernetes", "sev1", "sev2"],
@@ -13,8 +13,8 @@
     },
     {
       "id": "eng-002",
-      "name": "Jordan Rivera",
-      "slack_user_id": "U0BBG4TGU2V",
+      "name": "Pragati Hatkamkar",
+      "slack_user_id": "U0BBF918JUD",
       "email": "jordan.rivera@company.com",
       "skills": ["database", "performance", "remote-session", "troubleshooting"],
       "products": ["Platform A", "Database Suite"],
@@ -24,8 +24,8 @@
     },
     {
       "id": "eng-003",
-      "name": "Sam Patel",
-      "slack_user_id": "U0BBG4TGU2V",
+      "name": "Palak Vora",
+      "slack_user_id": "U0BD1RA1WDN",
       "email": "sam.patel@company.com",
       "skills": ["escalation", "key-customer", "product-expertise", "sev1"],
       "products": ["Platform B", "Enterprise Suite"],
@@ -35,8 +35,8 @@
     },
     {
       "id": "eng-004",
-      "name": "Taylor Brooks",
-      "slack_user_id": "U0BBG4TGU2V",
+      "name": "Chetan Khot",
+      "slack_user_id": "U0BCAQ5LTS7",
       "email": "taylor.brooks@company.com",
       "skills": ["remote-session", "troubleshooting", "sev2", "sev3", "service-request"],
       "products": ["Platform A", "Platform B", "Database Suite"],

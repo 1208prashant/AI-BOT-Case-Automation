@@ -43,6 +43,38 @@ def _bool(value: str | None, default: bool = False) -> bool:
     return value.strip().lower() in {"1", "true", "yes", "on"}
 
 
+def is_valid_openai_api_key(key: str | None) -> bool:
+    """Return True only for a non-empty, non-placeholder OpenAI API key."""
+    if not key or not key.strip():
+        return False
+
+    normalized = key.strip()
+    lower = normalized.lower()
+
+    placeholder_markers = (
+        "your-openai",
+        "your_openai",
+        "sk-your",
+        "sk-xxx",
+        "changeme",
+        "placeholder",
+        "example.com",
+        "<",
+        ">",
+    )
+    if any(marker in lower for marker in placeholder_markers):
+        return False
+
+    if not normalized.startswith("sk-"):
+        return False
+
+    # Real OpenAI keys are significantly longer than template values.
+    if len(normalized) < 40:
+        return False
+
+    return True
+
+
 def load_settings() -> Settings:
     return Settings(
         slack_bot_token=os.getenv("SLACK_BOT_TOKEN", ""),

@@ -5,7 +5,7 @@ import logging
 import re
 from typing import Iterable
 
-from src.config import load_json_config
+from src.config import is_valid_openai_api_key, load_json_config
 from src.models import CaseAnalysis, RequestType, Severity, SupportCase
 
 logger = logging.getLogger(__name__)
@@ -28,17 +28,24 @@ class CaseAnalyzer:
     """Analyzes support cases using OpenAI when available, otherwise rule-based logic."""
 
     def __init__(self, openai_api_key: str = "", openai_model: str = "gpt-4o-mini", notify_sev3: bool = False):
-        self.openai_api_key = openai_api_key
+        self.openai_api_key = openai_api_key.strip() if openai_api_key else ""
         self.openai_model = openai_model
         self.routing_rules = load_json_config("routing_rules.json")
         self.notify_sev3 = notify_sev3 or self.routing_rules.get("notify_sev3", False)
+        self.use_openai = is_valid_openai_api_key(self.openai_api_key)
+
+        if self.openai_api_key and not self.use_openai:
+            logger.info("OpenAI API key is missing or a placeholder — using rule-based analysis")
+        elif self.use_openai:
+            logger.info("OpenAI analysis enabled (model=%s)", self.openai_model)
 
     def analyze(self, case: SupportCase) -> CaseAnalysis:
-        if self.openai_api_key:
+        if self.use_openai:
             try:
                 return self._analyze_with_openai(case)
             except Exception as exc:
-                logger.warning("OpenAI analysis failed, using rules: %s", exc)
+                logger.warning("OpenAI analysis failed, disabling OpenAI and using rules: %s", exc)
+                self.use_openai = False
 
         return self._analyze_with_rules(case)
 

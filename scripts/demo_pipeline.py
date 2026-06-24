@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from src.ai.analyzer import CaseAnalyzer
+from src.config import BOT_DISPLAY_NAME
 from src.models import SupportCase
 from src.routing.router import EngineerRouter
 
